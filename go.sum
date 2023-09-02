@@ -1,0 +1,7 @@
+github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/schollz/logger v1.0.1 h1:BuBAU+euqphM0Ny9qFVScl4RSxatis4nCHIkOxO2cUU=
+github.com/schollz/logger v1.0.1/go.mod h1:P6F4/dGMGcx8wh+kG1zrNEd4vnNpEBY/mwEMd/vn6AM=
+github.com/schollz/wifiscan v1.1.1 h1:7vF5ffuE5BZhOI04TJbgg/7ELipe5A0y64WBb8z3mAc=
+github.com/schollz/wifiscan v1.1.1/go.mod h1:PvIH4FM7Fr0t+EZg5NLy5L9kTO6Ce6/T1CKDNf1kKG0=
+github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
