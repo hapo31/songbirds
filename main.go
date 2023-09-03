@@ -8,10 +8,8 @@ import (
 )
 
 func main() {
-	interfaces, _ := songbirds.EnumInterfaces(runtime.GOOS)
+	wlanInterface, _ := songbirds.LookUpWlanInterface(runtime.GOOS)
 
-	for _, i := range interfaces {
-		fmt.Println(i)
-	}
+	fmt.Printf("%s\n", wlanInterface)
 	fmt.Println("finish.")
 }
