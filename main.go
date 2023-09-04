@@ -3,28 +3,38 @@ package main
 import (
 	"fmt"
 	"runtime"
+	"strings"
 
 	"github.com/hapo31/songbirds/songbirds"
 )
 
 func main() {
+
 	wlanInterface, _ := songbirds.LookUpWlanInterface(runtime.GOOS)
 
-	fmt.Printf("%s\n", wlanInterface)
+	ctx, _, err := songbirds.HTTPServer(8080, func() (bool, string, error) {
+		accessPoints, err := songbirds.ScanAccessPoint(wlanInterface, runtime.GOOS)
+		if err != nil {
+			fmt.Println(err)
+			return false, "", err
+		}
 
-	accessPoints, err := songbirds.ScanAccessPoint(wlanInterface, runtime.GOOS)
+		for _, o := range accessPoints {
+			fmt.Printf("%s\n", o.ESSID)
+			if strings.Contains(o.ESSID, "switch") {
+				return true, o.ESSID, nil
+			}
+		}
+
+		return false, "", nil
+	})
 
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
-	if len(accessPoints) <= 0 {
-		fmt.Println("No entiry scan")
-	}
+	fmt.Println("wait...")
 
-	for _, o := range accessPoints {
-		fmt.Printf("%v\n", o)
-	}
-
-	fmt.Println("finish.")
+	<-ctx.Done()
 }
