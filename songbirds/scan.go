@@ -3,7 +3,6 @@ package songbirds
 import (
 	"bufio"
 	"bytes"
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -67,8 +66,6 @@ func scanLinux(wlanInterface string) (accessPoints []AccessPoint, err error) {
 }
 
 func parseIwlistEntryLinux(output string) (result AccessPoint, err error) {
-
-	fmt.Println(output)
 
 	if err != nil {
 		return
