@@ -12,6 +12,13 @@ func main() {
 
 	wlanInterface, _ := songbirds.LookUpWlanInterface(runtime.GOOS)
 
+	ap := songbirds.AccessPoint{
+		ESSID:     "YYYY-5G",
+		Encrypted: true,
+	}
+
+	songbirds.ConnectSwitchAP(ap, "YasuharaSyouta", wlanInterface, runtime.GOOS)
+
 	ctx, _, err := songbirds.HTTPServer(8080, func() (bool, string, error) {
 		accessPoints, err := songbirds.ScanAccessPoint(wlanInterface, runtime.GOOS)
 		if err != nil {
@@ -37,4 +44,6 @@ func main() {
 	fmt.Println("wait...")
 
 	<-ctx.Done()
+
+	fmt.Println()
 }
